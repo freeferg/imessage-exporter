@@ -1,11 +1,11 @@
 use std::{
     env,
-    fs::{copy, exists},
-    path::PathBuf,
+    fs::copy,
+    path::{Path, PathBuf},
 };
 
 fn main() {
-    if !exists("src/message_types/handwriting/handwriting_proto.rs").unwrap() {
+    if !Path::new("src/message_types/handwriting/handwriting_proto.rs").exists() {
         protobuf_codegen::Codegen::new()
             .pure()
             .input("src/message_types/handwriting/handwriting.proto")
